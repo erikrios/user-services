@@ -7,7 +7,36 @@ public class Solution {
 
     // Complete the countingValleys function below.
     static int countingValleys(int n, String s) {
-        return 0;
+        int totalValleys = 0;
+        int state = 0;
+        String preState = "";
+
+        for (int i = 0; i < n; i++) {
+            char currentState = s.charAt(i);
+            boolean isSeaLevel;
+
+            if (currentState == 'D') {
+                state--;
+            } else {
+                state++;
+            }
+
+            if (state == 0) {
+                isSeaLevel = true;
+            } else if (state < 0) {
+                isSeaLevel = false;
+                preState = "Valleys";
+            } else {
+                isSeaLevel = false;
+                preState = "Mountain";
+            }
+
+            if (isSeaLevel && preState.equalsIgnoreCase("Valleys")) {
+                totalValleys++;
+            }
+        }
+
+        return totalValleys;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
