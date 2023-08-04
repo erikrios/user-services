@@ -2,7 +2,7 @@ from enum import Enum
 from uuid import UUID
 
 
-class Gender(Enum):
+class Gender(str, Enum):
     MALE = "male"
     FEMALE = "female"
 

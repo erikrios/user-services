@@ -1,3 +1,5 @@
+from typing import Literal
+
 from pydantic import BaseModel
 
 from models import Gender
@@ -12,4 +14,4 @@ class CreateUserPayload(BaseModel):
 class UpdateUserPayload(BaseModel):
     full_name: str
     age: int
-    gender: Gender
+    gender: Literal['male', 'female']
