@@ -1,9 +1,9 @@
 from typing import List
 from uuid import UUID
 
-from models import User
-from payload import UpdateUserPayload, CreateUserPayload
-from service_exception import UnimplementedServiceException
+from models.models import User
+from httplayer.payload import UpdateUserPayload, CreateUserPayload
+from service.service_exception import UnimplementedServiceException
 
 
 class UserService:

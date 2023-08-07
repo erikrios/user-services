@@ -7,7 +7,7 @@ class Gender(str, Enum):
     FEMALE = "female"
 
     def __str__(self):
-        if self.MALE:
+        if self.value == Gender.MALE:
             return "male"
         else:
             return "female"

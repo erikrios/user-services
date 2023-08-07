@@ -3,10 +3,10 @@ from uuid import UUID
 
 from fastapi.encoders import jsonable_encoder
 
-from models import User
-from mongo_db import get_database
-from repository_exception import NotFoundRepositoryException
-from user_repository import UserRepository
+from models.models import User
+from db.mongo_db import get_database
+from repository.repository_exception import NotFoundRepositoryException
+from repository.user_repository import UserRepository
 
 
 class UserMongoRepository(UserRepository):

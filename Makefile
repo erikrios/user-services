@@ -6,6 +6,9 @@ run:
 	DB_PASSWORD="supersecretpassword" \
 	uvicorn main:app --port 8000 --reload
 
+run-test:
+	python3 -m unittest tests/user_mongo_repository_test.py
+
 gen-venv:
 	python3 -m venv venv
 

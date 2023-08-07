@@ -1,8 +1,8 @@
 from typing import List
 from uuid import UUID
 
-from models import User
-from repository_exception import UnimplementedRepositoryException
+from models.models import User
+from repository.repository_exception import UnimplementedRepositoryException
 
 
 class UserRepository:

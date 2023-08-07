@@ -5,13 +5,13 @@ from uuid import UUID
 from fastapi import FastAPI, status, Request
 from fastapi.responses import JSONResponse
 
-from http_exception import handle_exception
-from models import User
-from payload import CreateUserPayload, UpdateUserPayload
-from user_mongo_repository import UserMongoRepository
-from user_repository import UserRepository
-from user_service import UserService
-from user_service_impl import UserServiceImpl
+from httplayer.http_exception import handle_exception
+from httplayer.payload import CreateUserPayload, UpdateUserPayload
+from models.models import User
+from repository.user_mongo_repository import UserMongoRepository
+from repository.user_repository import UserRepository
+from service.user_service import UserService
+from service.user_service_impl import UserServiceImpl
 
 app = FastAPI()
 open_app = FastAPI()
@@ -21,7 +21,7 @@ repo: UserRepository = UserMongoRepository()
 service: UserService = UserServiceImpl(repo)
 
 
-@secured_app.middleware("http")
+@secured_app.middleware("httplayer")
 async def api_key_middleware(request: Request, call_next):
     if request.headers.get('API-KEY') != os.getenv("API_KEY"):
         return JSONResponse(status_code=status.HTTP_401_UNAUTHORIZED,

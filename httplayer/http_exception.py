@@ -1,6 +1,6 @@
 from fastapi import HTTPException, status
 
-from service_exception import NotFoundServiceException
+from service.service_exception import NotFoundServiceException
 
 
 def handle_exception(e: Exception):

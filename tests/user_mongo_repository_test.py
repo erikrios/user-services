@@ -1,9 +1,9 @@
 import unittest
 from uuid import uuid4
 
-from models import User, Gender
-from user_mongo_repository import UserMongoRepository
-from repository_exception import NotFoundRepositoryException
+from models.models import User, Gender
+from repository.user_mongo_repository import UserMongoRepository
+from repository.repository_exception import NotFoundRepositoryException
 
 
 class MyTestCase(unittest.TestCase):

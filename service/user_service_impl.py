@@ -1,12 +1,12 @@
 from typing import List
 from uuid import UUID, uuid4
 
-from models import User
-from payload import CreateUserPayload, UpdateUserPayload
-from repository_exception import NotFoundRepositoryException, UnimplementedRepositoryException
-from service_exception import UnimplementedServiceException, NotFoundServiceException, UnknownServiceException
-from user_repository import UserRepository
-from user_service import UserService
+from httplayer.payload import CreateUserPayload, UpdateUserPayload
+from models.models import User, Gender
+from repository.repository_exception import NotFoundRepositoryException, UnimplementedRepositoryException
+from repository.user_repository import UserRepository
+from service.service_exception import UnimplementedServiceException, NotFoundServiceException, UnknownServiceException
+from service.user_service import UserService
 
 
 class UserServiceImpl(UserService):
@@ -37,7 +37,13 @@ class UserServiceImpl(UserService):
             raise UnknownServiceException()
 
     def update(self, user_id: UUID, new_user: UpdateUserPayload):
-        update_user: User = User(user_id, new_user.full_name, new_user.age, new_user.gender)
+        test: str
+        if new_user.gender == "male":
+            test = Gender.MALE
+        else:
+            test = Gender.FEMALE
+        update_user: User = User(user_id, new_user.full_name, new_user.age,
+                                 Gender.MALE if new_user.gender == "male" else Gender.FEMALE)
         try:
             self.repo.update(user_id, update_user)
         except NotFoundRepositoryException as user_not_found_exception:
